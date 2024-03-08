@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type User = {
@@ -27,7 +28,7 @@ export default function Home() {
 
   const PersonalInfoURL = "https://cabinet.miem.hse.ru/api/student_profile"
 
-  const NationalityURL = 'https://api.nationalize.io?name=Дима'
+  const NationalityURL = 'https://api.nationalize.io?name='
 
   const axios = require('axios');
 
@@ -46,7 +47,9 @@ export default function Home() {
 
   useEffect(() => {
     if (userData?.name) {
-      axios.get(NationalityURL)
+      const fullname = userData.name.split(" ")
+      const name = fullname[1]
+      axios.get(`${NationalityURL}${name}`)
         .then((response: any) => {
           console.log(response.data.country)
           setNationality(response.data.country)
@@ -77,7 +80,15 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-5">
       <header className="flex flex-row justify-between items-center w-full py-4 px-20 border-b">
-        <p className="text-xl">Мой сайт</p>
+        <ul className="flex flex-row gap-5">
+          <li>
+            <Link className="text-xl" href='/'>Главная</Link>
+          </li>
+          <li>
+            <Link className="text-xl" href="/information">Статическая Информация</Link>
+          </li>
+        </ul>
+
         <ModeToggle />
       </header>
 
