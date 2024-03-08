@@ -19,5 +19,14 @@ pnpm dev
 # or
 bun dev
 ```
+## Переменные окружение
+
+В папке website создайте файл .env.local
+Отредактируйте файл в соответствие с вашими токеном:
+
+```typescript
+NEXT_PUBLIC_TOKEN=your_token
+```
+
 
 Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере для того, чтобы увидеть результат.
