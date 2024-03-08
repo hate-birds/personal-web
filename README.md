@@ -1,6 +1,6 @@
 Приложение создано с помощью [Next.js](https://nextjs.org/)
 
-## Getting Started
+## Готовимся к запуску
 
 Для запуска development сервера:
 
