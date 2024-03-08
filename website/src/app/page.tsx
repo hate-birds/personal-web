@@ -75,8 +75,11 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-5">
-      <ModeToggle />
+    <main className="flex min-h-screen flex-col items-center gap-5">
+      <header className="flex flex-row justify-between items-center w-full py-4 px-20 border-b">
+        <p className="text-xl">Мой сайт</p>
+        <ModeToggle />
+      </header>
 
       <Card className="w-[350px]">
         <CardHeader>
