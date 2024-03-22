@@ -32,7 +32,6 @@ export default function Home() {
 
   const axios = require('axios');
 
-  console.log(process.env.NEXT_PUBLIC_TOKEN)
   const token = process.env.NEXT_PUBLIC_TOKEN
 
   const [userData, setUserData] = useState<User>()
@@ -58,7 +57,7 @@ export default function Home() {
         .catch((error: any) => console.error(error));
     }
 
-  }, [userData])
+  }, [userData, axios])
 
   useEffect(() => {
     axios.get(PersonalInfoURL, config)
@@ -75,7 +74,7 @@ export default function Home() {
       .catch((error: any) => console.error(error));
 
 
-  }, [])
+  }, [axios])
 
 
   return (
@@ -110,9 +109,9 @@ export default function Home() {
           </div>
           <h2 className="text-xl mt-6 font-bold">Вероятность национальности</h2>
           <div className="flex flex-col mt-2 gap-2">
-            {nationality?.map((element) => {
+            {nationality?.map((element, index) => {
               return (
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1" key={`nationalety ${index}`}>
                   <p>{element.country_id}</p>
                   <Progress value={element.probability * 100} />
                 </div>
